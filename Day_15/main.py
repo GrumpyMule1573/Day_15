@@ -71,7 +71,6 @@ def run_the_coffee_machine():
             print(f"Water: {water_left}\nMilk: {milk_left}\nCoffee: {coffee_left}\nMoney: {money_taken}")
         else:
             can_it_be_made = check_resources(water_left, milk_left, coffee_left, money_taken, customer_entry)
-            print(can_it_be_made)
             if not can_it_be_made[0]:
                 print("Please make another choice.")
             else:
