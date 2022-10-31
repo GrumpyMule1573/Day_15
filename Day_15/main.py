@@ -1,7 +1,7 @@
 from Day_15.coffee_menu import MENU, resources
 
 
-# TODO 1. enable report production
+# enable report production
 def report(water_left, water_used, milk_left, milk_used, coffee_left, coffee_used, money_taken, customer_entry):
     total_money = money_taken
     remaining_water = water_left - water_used
@@ -10,7 +10,7 @@ def report(water_left, water_used, milk_left, milk_used, coffee_left, coffee_use
     return remaining_water, remaining_milk, remaining_coffee
 
 
-# TODO 2. ask user what they want
+# what the customer chooses
 def customer_choice():
     entry = input("What would you like? (espresso, latte, cappuccino)").lower()
     while entry not in ("espresso", "latte", "cappuccino", "report", "off"):
@@ -18,7 +18,7 @@ def customer_choice():
     return entry
 
 
-# TODO 3. check whether enough resources
+# ingredients for the coffee chosen
 def ingredients_for_choice(customer_entry):
     if customer_entry in MENU:
         water_used = MENU[customer_entry]["ingredients"]["water"]
@@ -31,6 +31,7 @@ def ingredients_for_choice(customer_entry):
         return [water_used, milk_used, coffee_used]
 
 
+# check if there is enough stuff left
 def check_resources(water, milk, coffee, money, customer_entry):
     water_left = water
     milk_left = milk
@@ -56,6 +57,7 @@ def check_resources(water, milk, coffee, money, customer_entry):
         return True, water_left, milk_left, coffee_left, money_taken
 
 
+# run the coffee machine
 def run_the_coffee_machine():
     machine_running = True
     water_left = resources['water']
@@ -82,13 +84,14 @@ def run_the_coffee_machine():
                 payment(money_to_add)
 
 
-
+# how much does the customer owe
 def how_much(customer_entry):
     if customer_entry in MENU:
         price = MENU[customer_entry]["cost"]
         return price
 
 
+# how many coins has the customer entered, work out change
 def payment(price):
     print(f"${price} to pay.")
     total_paid = 0
