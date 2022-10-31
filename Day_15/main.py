@@ -27,7 +27,6 @@ def ingredients_for_choice(customer_entry):
             milk_used = 0
         else:
             milk_used = MENU[customer_entry]["ingredients"]["milk"]
-        print(water_used, milk_used, coffee_used)
         return [water_used, milk_used, coffee_used]
 
 
@@ -97,10 +96,10 @@ def payment(price):
     total_paid = 0
     while total_paid < price:
         quarters = int(input("How many quarters are you adding? "))
-        nickels = int(input("How many nickels are you adding? "))
         dimes = int(input("How many dimes are you adding? "))
+        nickels = int(input("How many nickels are you adding? "))
         pennies = int(input("How many pennies are you adding? "))
-        total_paid = round((quarters * 0.25) + (nickels * 0.1) + (dimes * 0.05) + (pennies * 0.01), 2)
+        total_paid = round((quarters * 0.25) + (dimes * 0.1) + (nickels * 0.05) + (pennies * 0.01), 2)
         if total_paid < price:
             print("Please add more coins, not enough! Start again, money returned.")
     change = round((total_paid - price), 2)
