@@ -18,5 +18,6 @@ while is_it_on:
         is_it_on = False
     elif drink_ordered is not None:
         if coffee_machine.is_resource_sufficient(drink_ordered):
-            coffee_machine.make_coffee(drink_ordered)
-            money_taken.make_payment(drink_ordered.cost)
+            if money_taken.make_payment(drink_ordered.cost):
+                coffee_machine.make_coffee(drink_ordered)
+
